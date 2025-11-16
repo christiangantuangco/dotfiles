@@ -1,0 +1,141 @@
+{
+  "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
+  "palette": {
+    "black": "#111111",
+    "white": "#f7f7f7"
+  },
+  "console_title_template": "{{if .Root}}[root] {{end}}Tan in {{if eq .Folder .UserName}}home{{else}}{{.Folder}}{{end}}.",
+  "blocks": [
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "\u250c",
+          "foreground": "p:black",
+          "background": "transparent",
+          "type": "text",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "linux": "\uf17c",
+            "macos": "\uf179",
+            "ubuntu": "\uf31b",
+            "windows": "\ue62a"
+          },
+          "template": " {{.Icon}}{{if .WSL}} (WSL){{end}}\u2800",
+          "foreground": "p:white",
+          "background": "#464646",
+          "type": "os",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": " \uf489 {{.Name}}\u2800",
+          "foreground": "p:black",
+          "background": "p:white",
+          "type": "shell",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": " \uf2c0 {{.HostName}}\ue0bd{{.UserName}}\u2800",
+          "foreground": "p:white",
+          "background": "#464646",
+          "type": "session",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "branch_icon": " \ue0a0 ",
+            "cache_duration": "none"
+          },
+          "template": "{{.HEAD}}\u2800",
+          "foreground": "p:black",
+          "background": "#ffffd6",
+          "type": "git",
+          "style": "plain"
+        }
+      ],
+      "newline": true
+    },
+    {
+      "type": "prompt",
+      "alignment": "right",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none",
+            "style": "austin",
+            "threshold": 0
+          },
+          "template": "{{.FormattedMs}}",
+          "foreground": "#464646",
+          "background": "transparent",
+          "type": "executiontime",
+          "style": "plain"
+        },
+        {
+          "properties": {
+            "cache_duration": "none",
+            "time_format": "02/01/06 15:04"
+          },
+          "template": "<p:black> · </>{{.CurrentDate | date .Format}}",
+          "foreground": "p:black",
+          "background": "transparent",
+          "type": "time",
+          "style": "plain"
+        }
+      ]
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "cache_duration": "none"
+          },
+          "template": "<p:black>\u2514</><#47afff>[</> {{- $path := .PWD }} {{ $parts := splitList \"/\" $path }} {{- range $index, $element := $parts }}{{- if eq $element \"~\" -}} \ueb06 {{- else if eq $element \"..\" -}}<#47afff> » .. {{- else -}}<#47afff> » </>\uf07b {{$element}} {{- end }}{{- end }}<#47afff> ]</>",
+          "foreground": "p:black",
+          "background": "transparent",
+          "type": "path",
+          "style": "plain"
+        }
+      ],
+      "newline": true
+    },
+    {
+      "type": "prompt",
+      "alignment": "left",
+      "segments": [
+        {
+          "properties": {
+            "always_enabled": true,
+            "cache_duration": "none"
+          },
+          "template": "❯",
+          "foreground": "#81ff91",
+          "background": "transparent",
+          "type": "status",
+          "style": "plain",
+          "foreground_templates": [
+            "{{if gt .Code 0}}#ff3030{{end}}"
+          ]
+        }
+      ],
+      "newline": true
+    }
+  ],
+  "version": 3,
+  "final_space": true
+}
