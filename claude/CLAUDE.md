@@ -47,10 +47,10 @@ When modifying code, always follow this sequence:
 6. When the change involves protocol implementations, complex data structures, algorithms, design patterns, or performance-sensitive code — dispatch @web-explorer to verify the approach against official docs and established best practices before finalizing
 7. COMMIT workflow:
    - After verified changes, stage the relevant files with git add
-   - Read the last 10 commit messages with git log --oneline -10 to match the existing commit style
-   - Draft a commit message following the same pattern/convention found in the history
+   - Draft a commit message — subject line only, no body/description
+   - Format: `type(scope): message` — if multiple scopes, comma-separate them: `feat(vnc-server, mm-server): ...`
    - Present the staged diff summary and proposed commit message to me for review
-   - Wait for my approval before running git commit
+   - ALWAYS wait for explicit approval ("yes", "go ahead", etc.) before running git commit — never commit immediately after drafting the message
    - Never git push without my explicit instruction
 
 # Communication
