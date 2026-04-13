@@ -1,0 +1,61 @@
+# Claude Code Setup Instructions
+
+You are setting up Claude Code on a fresh machine using the config from this dotfiles repo.
+Follow these steps exactly.
+
+## 1. Locate the dotfiles
+
+The dotfiles repo should already be cloned. Confirm the `claude/` directory exists:
+
+```
+~/dotfiles/claude/
+```
+
+If it's cloned elsewhere, adjust the path accordingly.
+
+## 2. Create the required directories
+
+```bash
+mkdir -p ~/.claude/agents
+mkdir -p ~/.claude/rules
+mkdir -p ~/.claude/skills/analyze
+mkdir -p ~/.claude/skills/init-project
+```
+
+## 3. Copy the config files
+
+```bash
+DOTFILES=~/dotfiles/claude
+
+cp "$DOTFILES/CLAUDE.md"                       ~/.claude/CLAUDE.md
+cp "$DOTFILES/settings.json"                   ~/.claude/settings.json
+cp "$DOTFILES/statusline-command.sh"           ~/.claude/statusline-command.sh
+cp "$DOTFILES/agents/web-explorer.md"          ~/.claude/agents/web-explorer.md
+cp "$DOTFILES/rules/dotnet.md"                 ~/.claude/rules/dotnet.md
+cp "$DOTFILES/rules/rust.md"                   ~/.claude/rules/rust.md
+cp "$DOTFILES/skills/analyze/SKILL.md"         ~/.claude/skills/analyze/SKILL.md
+cp "$DOTFILES/skills/init-project/SKILL.md"    ~/.claude/skills/init-project/SKILL.md
+```
+
+## 4. Make the status line script executable
+
+```bash
+chmod +x ~/.claude/statusline-command.sh
+```
+
+## 5. Verify
+
+Confirm all files are in place:
+
+```bash
+ls ~/.claude/CLAUDE.md ~/.claude/settings.json ~/.claude/statusline-command.sh
+ls ~/.claude/agents/web-explorer.md
+ls ~/.claude/rules/dotnet.md ~/.claude/rules/rust.md
+ls ~/.claude/skills/analyze/SKILL.md ~/.claude/skills/init-project/SKILL.md
+```
+
+## Dependencies
+
+- `jq` — required by `statusline-command.sh` (`sudo apt install jq` / `sudo dnf install jq`)
+- `dotnet format` — required by the C# format hook (included with .NET SDK)
+- `rustfmt` — required by the Rust format hook (`rustup component add rustfmt`)
