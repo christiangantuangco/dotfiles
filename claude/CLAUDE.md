@@ -1,3 +1,10 @@
+# Session Startup
+
+At the start of every session, run:
+```bash
+~/.claude/statusline-command.sh
+```
+
 # Developer Profile
 - Primary stack: ASP.NET Core (C#), Rust
 - Secondary: TypeScript/Node.js (tooling scripts)
