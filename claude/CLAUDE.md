@@ -1,3 +1,10 @@
+# Session Startup
+
+At the start of every session, run:
+```bash
+~/.claude/statusline-command.sh
+```
+
 # Developer Profile
 - Primary stack: ASP.NET Core (C#), Rust
 - Secondary: TypeScript/Node.js (tooling scripts)
@@ -49,6 +56,7 @@ When modifying code, always follow this sequence:
    - After verified changes, stage the relevant files with git add
    - Draft a commit message — subject line only, no body/description
    - Format: `type(scope): message` — if multiple scopes, comma-separate them: `feat(vnc-server, mm-server): ...`
+   - Flutter changes use `flutter` as the scope (e.g. `fix(flutter): ...` or `fix(flutter, vnc-server): ...`)
    - Present the staged diff summary and proposed commit message to me for review
    - ALWAYS wait for explicit approval ("yes", "go ahead", etc.) before running git commit — never commit immediately after drafting the message
    - Never git push without my explicit instruction
