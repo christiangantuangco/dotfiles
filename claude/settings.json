@@ -16,6 +16,7 @@
       "WebFetch",
       "WebSearch",
       "Task",
+      "Bash(~/.claude/statusline-command.sh *)",
       "Bash(dotnet *)",
       "Bash(cargo *)",
       "Bash(git status)",
