@@ -37,6 +37,7 @@ paths:
 - One module per file — avoid inline mod blocks for anything nontrivial
 - pub(crate) over pub when the item doesn't need to leave the crate
 - Group imports: std, external crates, crate-internal (separated by blank lines)
+- All `use` declarations at the top of the file — never inside function bodies or blocks
 - #[must_use] on functions returning values that shouldn't be ignored
 
 ## Testing

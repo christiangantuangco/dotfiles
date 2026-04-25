@@ -1,9 +1,7 @@
 {
-  "statusLine": {
-    "type": "command",
-    "command": "bash ~/.claude/statusline-command.sh"
+  "env": {
+    "BASH_DEFAULT_TIMEOUT_MS": "30000"
   },
-  "skipDangerousModePermissionPrompt": true,
   "permissions": {
     "allow": [
       "Read",
@@ -47,9 +45,6 @@
       "Bash(curl *)"
     ]
   },
-  "env": {
-    "BASH_DEFAULT_TIMEOUT_MS": "30000"
-  },
   "hooks": {
     "PostToolUse": [
       {
@@ -73,5 +68,11 @@
         ]
       }
     ]
-  }
+  },
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/statusline-command.sh"
+  },
+  "skipDangerousModePermissionPrompt": true,
+  "theme": "light"
 }
