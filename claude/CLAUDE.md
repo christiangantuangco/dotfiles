@@ -6,10 +6,10 @@ At the start of every session, run:
 ```
 
 # Developer Profile
-- Primary stack: ASP.NET Core (C#), Rust
+- Primary stack: ASP.NET Core (C#), Rust, Go
 - Secondary: TypeScript/Node.js (tooling scripts)
 - OS: Debian, Fedora, Windows | Editor: Visual Studio, VS Code
-- Package managers: dotnet CLI, cargo, npm/pnpm
+- Package managers: dotnet CLI, cargo, go, npm/pnpm
 
 # Code Style Preferences
 
@@ -36,6 +36,17 @@ At the start of every session, run:
 - Trailing commas on multi-line lists
 - Run cargo clippy as baseline
 
+## Go
+- Follow effective Go and standard Go style guide
+- Use `gofmt` defaults — do not override formatting
+- Error handling: return errors with `fmt.Errorf("context: %w", err)`; no panic in library code
+- Naming: MixedCaps (exported), mixedCaps (unexported), acronyms all-caps (e.g. `HTTPServer`)
+- Use `is` prefix on boolean-returning functions, no `get_` prefix on getters (idiomatic Go uses bare name)
+- Interfaces defined at point of use (consumer side), kept small (1–2 methods preferred)
+- Indentation: tabs (gofmt default)
+- Max line length: 100 chars
+- Run `go vet ./...` as baseline after `go build ./...`
+
 ## TypeScript
 - camelCase (variables/functions), PascalCase (types/interfaces)
 - Indentation: 2 spaces
@@ -49,6 +60,7 @@ When modifying code, always follow this sequence:
 4. VERIFY:
    - C#: dotnet build, then dotnet test if tests exist
    - Rust: cargo check, cargo clippy, then cargo test if tests exist
+   - Go: go build ./..., go vet ./..., then go test ./... if tests exist
    - TS: npm run build / tsc --noEmit, then npm test if tests exist
 5. If the change affects a public API, check all callers
 6. When the change involves protocol implementations, complex data structures, algorithms, design patterns, or performance-sensitive code — dispatch @web-explorer to verify the approach against official docs and established best practices before finalizing
