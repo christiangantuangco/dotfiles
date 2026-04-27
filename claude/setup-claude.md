@@ -27,14 +27,16 @@ mkdir -p ~/.claude/skills/init-project
 ```bash
 DOTFILES=~/dotfiles/claude
 
-cp "$DOTFILES/CLAUDE.md"                       ~/.claude/CLAUDE.md
-cp "$DOTFILES/settings.json"                   ~/.claude/settings.json
-cp "$DOTFILES/statusline-command.sh"           ~/.claude/statusline-command.sh
-cp "$DOTFILES/agents/web-explorer.md"          ~/.claude/agents/web-explorer.md
-cp "$DOTFILES/rules/dotnet.md"                 ~/.claude/rules/dotnet.md
-cp "$DOTFILES/rules/rust.md"                   ~/.claude/rules/rust.md
-cp "$DOTFILES/skills/analyze/SKILL.md"         ~/.claude/skills/analyze/SKILL.md
-cp "$DOTFILES/skills/init-project/SKILL.md"    ~/.claude/skills/init-project/SKILL.md
+cp "$DOTFILES/CLAUDE.md"                            ~/.claude/CLAUDE.md
+cp "$DOTFILES/settings.json"                        ~/.claude/settings.json
+cp "$DOTFILES/statusline-command.sh"                ~/.claude/statusline-command.sh
+cp "$DOTFILES/agent-background-blacklist.json"      ~/.claude/agent-background-blacklist.json
+cp "$DOTFILES/agents/web-explorer.md"               ~/.claude/agents/web-explorer.md
+cp "$DOTFILES/agents/rust-learning-journal.md"      ~/.claude/agents/rust-learning-journal.md
+cp "$DOTFILES/rules/dotnet.md"                      ~/.claude/rules/dotnet.md
+cp "$DOTFILES/rules/rust.md"                        ~/.claude/rules/rust.md
+cp "$DOTFILES/skills/analyze/SKILL.md"              ~/.claude/skills/analyze/SKILL.md
+cp "$DOTFILES/skills/init-project/SKILL.md"         ~/.claude/skills/init-project/SKILL.md
 ```
 
 ## 4. Make the status line script executable
@@ -48,14 +50,15 @@ chmod +x ~/.claude/statusline-command.sh
 Confirm all files are in place:
 
 ```bash
-ls ~/.claude/CLAUDE.md ~/.claude/settings.json ~/.claude/statusline-command.sh
-ls ~/.claude/agents/web-explorer.md
+ls ~/.claude/CLAUDE.md ~/.claude/settings.json ~/.claude/statusline-command.sh ~/.claude/agent-background-blacklist.json
+ls ~/.claude/agents/web-explorer.md ~/.claude/agents/rust-learning-journal.md
 ls ~/.claude/rules/dotnet.md ~/.claude/rules/rust.md
 ls ~/.claude/skills/analyze/SKILL.md ~/.claude/skills/init-project/SKILL.md
 ```
 
 ## Dependencies
 
-- `jq` — required by `statusline-command.sh` (`sudo apt install jq` / `sudo dnf install jq`)
+- `jq` — required by `statusline-command.sh` and all hooks (`sudo apt install jq` / `sudo dnf install jq`)
 - `dotnet format` — required by the C# format hook (included with .NET SDK)
 - `rustfmt` — required by the Rust format hook (`rustup component add rustfmt`)
+- `gofmt` — required by the Go format hook (included with the Go toolchain)
