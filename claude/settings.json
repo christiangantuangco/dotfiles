@@ -24,6 +24,7 @@
       "Bash(git commit *)",
       "Bash(git branch *)",
       "Bash(git checkout *)",
+      "Bash(go *)",
       "Bash(npm *)",
       "Bash(pnpm *)",
       "Bash(node *)",
@@ -35,7 +36,27 @@
       "Bash(ls *)",
       "Bash(mkdir *)",
       "Bash(cp *)",
-      "Bash(mv *)"
+      "Bash(mv *)",
+      "Bash(which *)",
+      "Bash(stat *)",
+      "Bash(file *)",
+      "Bash(tree *)",
+      "Bash(du *)",
+      "Bash(df *)",
+      "Bash(pwd)",
+      "Bash(realpath *)",
+      "Bash(readlink *)",
+      "Bash(dirname *)",
+      "Bash(basename *)",
+      "Bash(diff *)",
+      "Bash(sort *)",
+      "Bash(uniq *)",
+      "Bash(grep *)",
+      "Bash(sed *)",
+      "Bash(awk *)",
+      "Bash(cut *)",
+      "Bash(tr *)",
+      "Bash(xargs *)"
     ],
     "deny": [
       "Read(.env*)",
@@ -46,6 +67,18 @@
     ]
   },
   "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Agent",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "BL=$(cat ~/.claude/agent-background-blacklist.json 2>/dev/null || echo '[]'); jq --argjson blacklist \"$BL\" 'if (.tool_input.subagent_type // \"\" | IN($blacklist[])) then empty else {hookSpecificOutput: {hookEventName: \"PreToolUse\", updatedInput: (.tool_input + {run_in_background: true})}} end'",
+            "timeout": 5
+          }
+        ]
+      }
+    ],
     "PostToolUse": [
       {
         "matcher": "Edit|MultiEdit|Write",
@@ -63,6 +96,16 @@
           {
             "type": "command",
             "command": "jq -r '.tool_input.file_path' | { read file_path; if echo \"$file_path\" | grep -qE '\\.rs$'; then rustfmt \"$file_path\" 2>/dev/null || true; fi; }",
+            "timeout": 10
+          }
+        ]
+      },
+      {
+        "matcher": "Edit|MultiEdit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "jq -r '.tool_input.file_path' | { read file_path; if echo \"$file_path\" | grep -qE '\\.go$'; then gofmt -w \"$file_path\" 2>/dev/null || true; fi; }",
             "timeout": 10
           }
         ]
