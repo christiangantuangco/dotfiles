@@ -1,4 +1,4 @@
-# Claude Code Setup Instructions
+# Claude Code Setup Instructions (Linux)
 
 You are setting up Claude Code on a fresh machine using the config from this dotfiles repo.
 Follow these steps exactly.
