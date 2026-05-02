@@ -20,6 +20,7 @@ mkdir -p ~/.claude/agents
 mkdir -p ~/.claude/rules
 mkdir -p ~/.claude/skills/analyze
 mkdir -p ~/.claude/skills/init-project
+mkdir -p ~/.claude/skills/build-agent
 ```
 
 ## 3. Copy the config files
@@ -33,10 +34,12 @@ cp "$DOTFILES/statusline-command.sh"                ~/.claude/statusline-command
 cp "$DOTFILES/agent-background-blacklist.json"      ~/.claude/agent-background-blacklist.json
 cp "$DOTFILES/agents/web-explorer.md"               ~/.claude/agents/web-explorer.md
 cp "$DOTFILES/agents/rust-learning-journal.md"      ~/.claude/agents/rust-learning-journal.md
+cp "$DOTFILES/agents/agent-builder.md"              ~/.claude/agents/agent-builder.md
 cp "$DOTFILES/rules/dotnet.md"                      ~/.claude/rules/dotnet.md
 cp "$DOTFILES/rules/rust.md"                        ~/.claude/rules/rust.md
 cp "$DOTFILES/skills/analyze/SKILL.md"              ~/.claude/skills/analyze/SKILL.md
 cp "$DOTFILES/skills/init-project/SKILL.md"         ~/.claude/skills/init-project/SKILL.md
+cp "$DOTFILES/skills/build-agent/SKILL.md"          ~/.claude/skills/build-agent/SKILL.md
 ```
 
 ## 4. Make the status line script executable
@@ -51,9 +54,9 @@ Confirm all files are in place:
 
 ```bash
 ls ~/.claude/CLAUDE.md ~/.claude/settings.json ~/.claude/statusline-command.sh ~/.claude/agent-background-blacklist.json
-ls ~/.claude/agents/web-explorer.md ~/.claude/agents/rust-learning-journal.md
+ls ~/.claude/agents/web-explorer.md ~/.claude/agents/rust-learning-journal.md ~/.claude/agents/agent-builder.md
 ls ~/.claude/rules/dotnet.md ~/.claude/rules/rust.md
-ls ~/.claude/skills/analyze/SKILL.md ~/.claude/skills/init-project/SKILL.md
+ls ~/.claude/skills/analyze/SKILL.md ~/.claude/skills/init-project/SKILL.md ~/.claude/skills/build-agent/SKILL.md
 ```
 
 ## Dependencies
