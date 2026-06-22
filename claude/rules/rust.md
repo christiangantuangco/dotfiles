@@ -24,7 +24,7 @@ paths:
 - Use anyhow::Result and anyhow::Error everywhere
 - Propagate errors with ? operator — avoid manual match on Result unless handling specific variants
 - Never panic in library code — panic is acceptable only in main() or tests
-- Use .context("message") and .with_context(|| ...) for adding error context
+- Use .context(...) for adding error context — pass a static string or format!() directly; do not use .with_context(|| ...)
 
 ## Types & Ownership
 - Derive Debug on all public types

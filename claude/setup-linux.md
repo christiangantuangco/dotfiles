@@ -37,6 +37,7 @@ cp "$DOTFILES/agents/rust-learning-journal.md"      ~/.claude/agents/rust-learni
 cp "$DOTFILES/agents/agent-builder.md"              ~/.claude/agents/agent-builder.md
 cp "$DOTFILES/rules/dotnet.md"                      ~/.claude/rules/dotnet.md
 cp "$DOTFILES/rules/rust.md"                        ~/.claude/rules/rust.md
+cp "$DOTFILES/rules/go.md"                          ~/.claude/rules/go.md
 cp "$DOTFILES/skills/analyze/SKILL.md"              ~/.claude/skills/analyze/SKILL.md
 cp "$DOTFILES/skills/init-project/SKILL.md"         ~/.claude/skills/init-project/SKILL.md
 cp "$DOTFILES/skills/build-agent/SKILL.md"          ~/.claude/skills/build-agent/SKILL.md
@@ -55,7 +56,7 @@ Confirm all files are in place:
 ```bash
 ls ~/.claude/CLAUDE.md ~/.claude/settings.json ~/.claude/statusline-command.sh ~/.claude/agent-background-blacklist.json
 ls ~/.claude/agents/web-explorer.md ~/.claude/agents/rust-learning-journal.md ~/.claude/agents/agent-builder.md
-ls ~/.claude/rules/dotnet.md ~/.claude/rules/rust.md
+ls ~/.claude/rules/dotnet.md ~/.claude/rules/rust.md ~/.claude/rules/go.md
 ls ~/.claude/skills/analyze/SKILL.md ~/.claude/skills/init-project/SKILL.md ~/.claude/skills/build-agent/SKILL.md
 ```
 
