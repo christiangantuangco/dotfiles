@@ -35,6 +35,7 @@ cp "$DOTFILES/agents/web-explorer.md"               ~/.claude/agents/web-explore
 cp "$DOTFILES/agents/rust-learning-journal.md"      ~/.claude/agents/rust-learning-journal.md
 cp "$DOTFILES/rules/dotnet.md"                      ~/.claude/rules/dotnet.md
 cp "$DOTFILES/rules/rust.md"                        ~/.claude/rules/rust.md
+cp "$DOTFILES/rules/go.md"                          ~/.claude/rules/go.md
 cp "$DOTFILES/skills/analyze/SKILL.md"              ~/.claude/skills/analyze/SKILL.md
 cp "$DOTFILES/skills/init-project/SKILL.md"         ~/.claude/skills/init-project/SKILL.md
 ```
@@ -52,7 +53,7 @@ Confirm all files are in place:
 ```bash
 ls ~/.claude/CLAUDE.md ~/.claude/settings.json ~/.claude/statusline-command.sh ~/.claude/agent-background-blacklist.json
 ls ~/.claude/agents/web-explorer.md ~/.claude/agents/rust-learning-journal.md
-ls ~/.claude/rules/dotnet.md ~/.claude/rules/rust.md
+ls ~/.claude/rules/dotnet.md ~/.claude/rules/rust.md ~/.claude/rules/go.md
 ls ~/.claude/skills/analyze/SKILL.md ~/.claude/skills/init-project/SKILL.md
 ```
 

@@ -1,10 +1,3 @@
-# Session Startup
-
-At the start of every session, run:
-```bash
-~/.claude/statusline-command.sh
-```
-
 # Developer Profile
 - Primary stack: ASP.NET Core (C#), Rust, Go
 - Secondary: TypeScript/Node.js (tooling scripts)
@@ -68,7 +61,6 @@ When modifying code, always follow this sequence:
    - After verified changes, stage the relevant files with git add
    - Draft a commit message — subject line only, no body/description
    - Format: `type(scope): message` — if multiple scopes, comma-separate them: `feat(vnc-server, mm-server): ...`
-   - Flutter changes use `flutter` as the scope (e.g. `fix(flutter): ...` or `fix(flutter, vnc-server): ...`)
    - Present the staged diff summary and proposed commit message to me for review
    - ALWAYS wait for explicit approval ("yes", "go ahead", etc.) before running git commit — never commit immediately after drafting the message
    - Never git push without my explicit instruction
@@ -77,3 +69,9 @@ When modifying code, always follow this sequence:
 - Be concise. Skip explanations I didn't ask for.
 - When unsure between two approaches, present both briefly with tradeoffs.
 - Don't repeat file contents back to me unless I ask.
+- Always explain technical terms when first used — especially OS-specific or environment-specific ones (systemd directives, kernel features, shell built-ins, distro paths, etc.). State what it is, where it applies, and what it does NOT apply to. Briefly is fine; never assume I know the term.
+
+# Accuracy — No Guessing
+- Never guess when reading or writing files and code. If you don't know a path, filename, value, API, config key, or behavior, verify it (read the file, grep the code, check the docs) before stating or using it.
+- If something cannot be verified, say so explicitly and label it as an assumption/placeholder — do not present a guess as fact.
+- This applies to file paths, config values, function/field names, log locations, system behavior, and OS/environment specifics.

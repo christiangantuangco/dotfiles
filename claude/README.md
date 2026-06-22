@@ -12,6 +12,7 @@
 | `agents/rust-learning-journal.md` | `~/.claude/agents/rust-learning-journal.md` | Appends structured entries to a Rust learning journal when understanding is confirmed |
 | `rules/dotnet.md` | `~/.claude/rules/dotnet.md` | C# conventions, auto-applied to *.cs / *.csproj / *.sln |
 | `rules/rust.md` | `~/.claude/rules/rust.md` | Rust conventions, auto-applied to *.rs / Cargo.toml |
+| `rules/go.md` | `~/.claude/rules/go.md` | Go conventions, auto-applied to *.go / go.mod / go.sum |
 | `skills/analyze/SKILL.md` | `~/.claude/skills/analyze/SKILL.md` | Pre/post change analysis skill |
 | `skills/init-project/SKILL.md` | `~/.claude/skills/init-project/SKILL.md` | Project CLAUDE.md bootstrapper skill |
 
