@@ -117,8 +117,9 @@
     "type": "command",
     "command": "bash ~/.claude/statusline-command.sh"
   },
-  "effortLevel": "high",
+  "effortLevel": "xhigh",
   "tui": "fullscreen",
   "skipDangerousModePermissionPrompt": true,
-  "theme": "light"
+  "theme": "light",
+  "agentPushNotifEnabled": true
 }
