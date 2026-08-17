@@ -10,17 +10,20 @@
 | `agent-background-blacklist.json` | `~/.claude/agent-background-blacklist.json` | Agents excluded from auto-backgrounding (empty = all agents may be backgrounded) |
 | `agents/web-explorer.md` | `~/.claude/agents/web-explorer.md` | Research agent for verifying technical approaches |
 | `agents/rust-learning-journal.md` | `~/.claude/agents/rust-learning-journal.md` | Appends structured entries to a Rust learning journal when understanding is confirmed |
+| `agents/agent-builder.md` | `~/.claude/agents/agent-builder.md` | Builds new subagent files into `~/.claude/agents/` |
 | `rules/dotnet.md` | `~/.claude/rules/dotnet.md` | C# conventions, auto-applied to *.cs / *.csproj / *.sln |
 | `rules/rust.md` | `~/.claude/rules/rust.md` | Rust conventions, auto-applied to *.rs / Cargo.toml |
 | `rules/go.md` | `~/.claude/rules/go.md` | Go conventions, auto-applied to *.go / go.mod / go.sum |
 | `skills/analyze/SKILL.md` | `~/.claude/skills/analyze/SKILL.md` | Pre/post change analysis skill |
 | `skills/init-project/SKILL.md` | `~/.claude/skills/init-project/SKILL.md` | Project CLAUDE.md bootstrapper skill |
+| `skills/build-agent/SKILL.md` | `~/.claude/skills/build-agent/SKILL.md` | Dispatches `agent-builder` to create a new subagent |
+| `skills/mr-analyzer/SKILL.md` | `~/.claude/skills/mr-analyzer/SKILL.md` | Merge-request review skill — remote-vs-remote diff, doc drift check, approve / changes-required table |
 
 ## Fresh machine setup
 
 1. Install Claude Code: `npm install -g @anthropic-ai/claude-code`
 2. Open Claude Code in the `~/dotfiles` directory
-3. Tell Claude: **"Read `claude/setup-claude.md` and follow the instructions to set yourself up"**
+3. Tell Claude: **"Read `claude/setup-linux.md` (or `claude/setup-windows.md`) and follow the instructions to set yourself up"**
 
 Claude will copy all config files into `~/.claude/` for you.
 
