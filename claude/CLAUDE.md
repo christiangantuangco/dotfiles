@@ -81,6 +81,8 @@ When modifying code, always follow this sequence:
 5. If the change affects a public API, check all callers
 6. When the change involves protocol implementations, complex data structures, algorithms, design patterns, or performance-sensitive code — dispatch @web-explorer to verify the approach against official docs and established best practices before finalizing
 7. COMMIT workflow:
+   - Never commit directly to the default branch — create a branch first, named `type/scope` using the same type and primary scope as the commit itself: `feat/claude`, `refactor/vs-code`, `chore/oh-my-posh`
+   - One scope per branch name even when the commit lists several — use the primary one
    - NEVER stage and push .gitignore - this will be done manually
    - After verified changes, stage the relevant files with git add
    - Draft a commit message — subject line only, no body/description
