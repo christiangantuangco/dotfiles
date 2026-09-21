@@ -23,6 +23,7 @@ Team-specific mandates. These take precedence over community conventions, includ
 ## Style
 - Follow official Rust style guide
 - Use rustfmt defaults — never override rustfmt.toml settings
+- Format with `rustfmt --edition <ed> <changed files>` — **never `cargo fmt`**. `cargo fmt` is crate-scoped and reformats every file in the crate, including ones with pre-existing drift that were not part of the change; it ignores file paths even when passed after `--`. Verified 2026-08-22.
 - Max line length: 100 chars
 - Trailing commas on multi-line lists
 
