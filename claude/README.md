@@ -22,10 +22,28 @@
 ## Fresh machine setup
 
 1. Install Claude Code: `npm install -g @anthropic-ai/claude-code`
-2. Open Claude Code in the `~/dotfiles` directory
-3. Tell Claude: **"Read `claude/setup-linux.md` (or `claude/setup-windows.md`) and follow the instructions to set yourself up"**
+2. Open Claude Code in the dotfiles directory (`~/dotfiles`; `$HOME\dotfiles` on Windows)
+3. Paste the prompt for your platform into Claude Code:
 
-Claude will copy all config files into `~/.claude/` for you.
+**macOS**
+
+```
+Read claude/setup-mac.md and follow the instructions to set yourself up
+```
+
+**Linux**
+
+```
+Read claude/setup-linux.md and follow the instructions to set yourself up
+```
+
+**Windows**
+
+```
+Read claude/setup-windows.md and follow the instructions to set yourself up
+```
+
+Claude will copy all config files into `~/.claude/` (`%USERPROFILE%\.claude\` on Windows) for you.
 
 ## Hooks
 

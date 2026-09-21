@@ -27,8 +27,8 @@ if [ -n "$model" ] || [ -n "$used" ]; then
     filled=$(( pct * 16 / 100 ))
     empty=$(( 16 - filled ))
     bar="["
-    for i in $(seq 1 $filled); do bar="${bar}█"; done
-    for i in $(seq 1 $empty);  do bar="${bar}░"; done
+    for ((i = 0; i < filled; i++)); do bar="${bar}█"; done
+    for ((i = 0; i < empty; i++));  do bar="${bar}░"; done
     bar="${bar}]"
     pct_label="${pct}%"
   fi

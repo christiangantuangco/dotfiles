@@ -8,7 +8,7 @@ At the start of every session, run:
 # Developer Profile
 - Primary stack: ASP.NET Core (C#), Rust, Go
 - Secondary: TypeScript/Node.js (tooling scripts)
-- OS: Debian, Fedora, Windows | Editor: Visual Studio, VS Code
+- OS: Debian, Fedora, Windows, macOS | Editor: Visual Studio, VS Code
 - Package managers: dotnet CLI, cargo, go, npm/pnpm
 
 # Code Style Preferences
