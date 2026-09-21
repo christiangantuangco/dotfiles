@@ -22,6 +22,7 @@ New-Item -ItemType Directory -Force -Path "$d\rules"               | Out-Null
 New-Item -ItemType Directory -Force -Path "$d\skills\analyze"      | Out-Null
 New-Item -ItemType Directory -Force -Path "$d\skills\init-project" | Out-Null
 New-Item -ItemType Directory -Force -Path "$d\skills\build-agent"  | Out-Null
+New-Item -ItemType Directory -Force -Path "$d\skills\mr-analyzer"  | Out-Null
 ```
 
 ## 3. Copy the config files
@@ -39,9 +40,11 @@ Copy-Item "$src\agents\rust-learning-journal.md"     "$dst\agents\rust-learning-
 Copy-Item "$src\agents\agent-builder.md"             "$dst\agents\agent-builder.md"
 Copy-Item "$src\rules\dotnet.md"                     "$dst\rules\dotnet.md"
 Copy-Item "$src\rules\rust.md"                       "$dst\rules\rust.md"
+Copy-Item "$src\rules\go.md"                         "$dst\rules\go.md"
 Copy-Item "$src\skills\analyze\SKILL.md"             "$dst\skills\analyze\SKILL.md"
 Copy-Item "$src\skills\init-project\SKILL.md"        "$dst\skills\init-project\SKILL.md"
 Copy-Item "$src\skills\build-agent\SKILL.md"         "$dst\skills\build-agent\SKILL.md"
+Copy-Item "$src\skills\mr-analyzer\SKILL.md"         "$dst\skills\mr-analyzer\SKILL.md"
 ```
 
 ## 4. Verify
@@ -59,9 +62,11 @@ $files = @(
     "$env:USERPROFILE\.claude\agents\agent-builder.md",
     "$env:USERPROFILE\.claude\rules\dotnet.md",
     "$env:USERPROFILE\.claude\rules\rust.md",
+    "$env:USERPROFILE\.claude\rules\go.md",
     "$env:USERPROFILE\.claude\skills\analyze\SKILL.md",
     "$env:USERPROFILE\.claude\skills\init-project\SKILL.md",
-    "$env:USERPROFILE\.claude\skills\build-agent\SKILL.md"
+    "$env:USERPROFILE\.claude\skills\build-agent\SKILL.md",
+    "$env:USERPROFILE\.claude\skills\mr-analyzer\SKILL.md"
 )
 foreach ($f in $files) {
     Write-Host "$(if (Test-Path $f) { 'OK     ' } else { 'MISSING' })  $f"

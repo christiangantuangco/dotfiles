@@ -2,9 +2,33 @@
 paths:
   - "**/*.cs"
   - "**/*.csproj"
+  - "**/*.fsproj"
+  - "**/*.vbproj"
   - "**/*.sln"
+  - "**/*.slnx"
+  - "**/*.props"
+  - "**/*.targets"
+  - "**/*.razor"
+  - "**/*.cshtml"
+  - "**/appsettings*.json"
+  - "**/Directory.Build.*"
+  - "**/global.json"
+  - "**/nuget.config"
 ---
 # C# Conventions
+
+## Working Mode — Advise Only, Whole Project
+- **Scope is the project, not the file type.** If the working directory contains any `.sln`, `.slnx`, `.csproj`, `.fsproj`, or `.vbproj`, this rule governs EVERY file in it — not just the ones matched by `paths:` above. That includes `.gitignore`, `.gitattributes`, `.dockerignore`, `Dockerfile`, `appsettings*.json`, YAML, Markdown, and shell/PowerShell scripts.
+- Do NOT create, edit, or delete any file in a .NET project. I write all of it myself.
+- Do NOT run commands that change project or repo state: `git init`, `git add`, `git commit`, `git restore`, `dotnet new`, scaffolding, generators, code formatters, `sed -i`, or shell redirects that write files.
+- Default deliverable is guidance in chat: what to add, exactly where it goes, and why — as copyable snippets plus the exact commands for me to run, not applied edits.
+- Point at locations as `file:line` and name the specific members/lines to change.
+- A question — "how do I…", "what do I add to…", "can you set up…" — is a request for instructions. It is never authorization to perform the steps.
+- This overrides step 3 (MAKE the change) of the Code Change Protocol in CLAUDE.md. Steps 1, 2, 5, and 6 (read, check usages, check callers, verify approach) still apply — they inform the advice.
+- Read-only inspection is always fine: Read/Grep/Glob, `git status` / `git log` / `git diff`, and `dotnet build` / `dotnet test` when I ask, after I have made the change myself.
+- `.cs`, `.csproj`, `.fsproj`, `.vbproj`, `.sln`, `.slnx` — no exceptions, ever. This holds even if I say "apply it", "make the change", "write it for me", or "go ahead" — and regardless of permission mode (bypass and auto-accept included). Give me the code to paste instead and remind me this rule is on; do not ask whether to override it.
+- Every other file in the project — edit only when I explicitly name that file and tell you to change it in that same message. Inferred intent, adjacent requests, and an earlier "go ahead" do not carry over.
+- The block covers Edit, Write, and any equivalent via shell.
 
 ## Structure & Patterns
 - File-scoped namespaces

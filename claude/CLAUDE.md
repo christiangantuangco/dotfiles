@@ -1,3 +1,10 @@
+# Session Startup
+
+At the start of every session, run:
+```bash
+~/.claude/statusline-command.sh
+```
+
 # Developer Profile
 - Primary stack: ASP.NET Core (C#), Rust, Go
 - Secondary: TypeScript/Node.js (tooling scripts)
@@ -28,6 +35,10 @@
 - Indentation: 4 spaces
 - Trailing commas on multi-line lists
 - Run cargo clippy as baseline
+- Match existing dependency versions from sibling workspace projects — use the same pinned version, do not independently pick current stable
+- Never introduce a new persistence or architecture pattern when one already exists in the codebase — mirror what's there
+- Registry credentials live in user-global `~/.cargo/config.toml`, never in the repo; never echo or commit tokens or secrets
+- Never `git push` under any circumstances, even on bypass / auto-accept mode. Local commits only — the user controls remote pushes.
 
 ## Go
 - Follow effective Go and standard Go style guide
@@ -46,6 +57,18 @@
 - Max line length: 120 chars
 
 # Code Change Protocol
+
+## .NET projects — advise-only, whole project
+If the working directory contains any `.sln`, `.slnx`, `.csproj`, `.fsproj`, or `.vbproj`, I am working in a .NET project. Then:
+- **Do not create, edit, or delete ANY file in it** — not just the C#/.NET ones. `.gitignore`, `.gitattributes`, `.dockerignore`, `Dockerfile`, `appsettings*.json`, YAML, Markdown, scripts — all of it. I write every file myself.
+- **Do not run state-changing commands**: `git init`, `git add`, `git commit`, `dotnet new`, scaffolding, generators, formatters, `sed -i`, or shell redirects that write files.
+- The deliverable is guidance in chat: copyable snippets plus the exact commands for me to run, with `file:line` pointers.
+- A question ("how do I…", "what do I add…", "can you set up…") is a request for instructions, not authorization to do it.
+- `.cs` / `.csproj` / `.fsproj` / `.vbproj` / `.sln` / `.slnx` stay off-limits unconditionally, even when I directly ask for the edit. Any other file in the project needs me to explicitly name it and ask for the change in that same message.
+- Read-only work is always fine: reading files, `git status` / `log` / `diff`, and `dotnet build` / `dotnet test` when I ask.
+
+See `~/.claude/rules/dotnet.md`. The sequence below applies to Rust, Go, and TypeScript.
+
 When modifying code, always follow this sequence:
 1. READ the file(s) being changed first — understand existing patterns
 2. CHECK for related tests, usages, and dependencies before editing
@@ -58,12 +81,19 @@ When modifying code, always follow this sequence:
 5. If the change affects a public API, check all callers
 6. When the change involves protocol implementations, complex data structures, algorithms, design patterns, or performance-sensitive code — dispatch @web-explorer to verify the approach against official docs and established best practices before finalizing
 7. COMMIT workflow:
+   - Never commit directly to the default branch — create a branch first, named `type/scope` using the same type and primary scope as the commit itself: `feat/claude`, `refactor/vs-code`, `chore/oh-my-posh`
+   - One scope per branch name even when the commit lists several — use the primary one
+   - NEVER stage and push .gitignore - this will be done manually
    - After verified changes, stage the relevant files with git add
    - Draft a commit message — subject line only, no body/description
    - Format: `type(scope): message` — if multiple scopes, comma-separate them: `feat(vnc-server, mm-server): ...`
+   - Flutter changes use `flutter` as the scope (e.g. `fix(flutter): ...` or `fix(flutter, vnc-server): ...`)
    - Present the staged diff summary and proposed commit message to me for review
    - ALWAYS wait for explicit approval ("yes", "go ahead", etc.) before running git commit — never commit immediately after drafting the message
-   - Never git push without my explicit instruction
+   - Never git push under any circumstances — not in bypass mode, not in auto-accept mode. Local commits only; the user controls all remote pushes.
+
+# Testing
+Do not write tests proactively. Only add test code when the user explicitly asks for tests. This applies to unit tests, integration tests, doctests, and `#[ignore]`-flagged stubs alike. If you would normally add a test as part of implementing a feature, skip it — the user will tell you when tests are wanted.
 
 # Communication
 - Be concise. Skip explanations I didn't ask for.

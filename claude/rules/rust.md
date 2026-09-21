@@ -9,6 +9,7 @@ paths:
 ## Company Standards / Policy
 Team-specific mandates. These take precedence over community conventions, including where they deviate from the official Rust API guidelines.
 
+- Do not write tests — no `#[cfg(test)] mod tests` blocks, no `tests/` directory, no test functions or fixtures; never add them alongside a change. Verification is `cargo check` + `cargo clippy`. Write tests only when explicitly asked for them
 - Never use Display to print or render our own structs/enums in logs, error messages, or other displayed output — do not implement std::fmt::Display on our types for that purpose; expose an explicit conversion method (e.g. as_str(), as_u64()) or format the relevant fields directly at the call site
 - No comments unless explicitly requested
 - Use get_ prefix on getters, is_ prefix on boolean-returning methods (deviates from Rust API guidelines, which drop the get_ prefix)
@@ -33,7 +34,7 @@ Team-specific mandates. These take precedence over community conventions, includ
 
 ## Error Handling
 - Propagate errors with ? operator — avoid manual match on Result unless handling specific variants
-- Never panic in library code — panic is acceptable only in main() or tests
+- Never panic in library code — panic is acceptable only in main()
 
 ## Types & Ownership
 - Derive Debug on all public types
@@ -47,8 +48,3 @@ Team-specific mandates. These take precedence over community conventions, includ
 - pub(crate) over pub when the item doesn't need to leave the crate
 - Group imports: std, external crates, crate-internal (separated by blank lines)
 - #[must_use] on functions returning values that shouldn't be ignored
-
-## Testing
-- Tests in a #[cfg(test)] mod tests block at the bottom of the file
-- Test function names: snake_case describing the scenario (test_parse_empty_input_returns_error)
-- Use assert_eq! and assert!(matches!(...)) over manual if/panic
